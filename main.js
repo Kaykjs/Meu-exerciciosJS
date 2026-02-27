@@ -793,6 +793,7 @@ function getDescricao(n) {
         38: "Contagem por Categoria",
         39: "Ranking de Pontuação",
         40: "Carrinho Simples",
+        41: "Calculadora com switch"
     };
     return desc[n] || '';
 }
