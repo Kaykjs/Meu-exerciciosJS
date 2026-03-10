@@ -701,6 +701,438 @@ function exercicio40() {
     }
 }
 
+function exercicio41() {
+    alert('Boas-vindas á calculadora!')
+
+    let dentroDaCalculadora = true;
+
+    function selecionarOpcao() {
+        const opcao = prompt(`
+    1 - Somar números
+    2 - Subtrair dois números
+    3 - Soma de porcentagem
+    4 - Multiplicação de dois números
+    5 - Divisão de dois números
+    6 - Sair
+  `);
+        return opcao;
+    }
+
+    function somarNumeros() {
+        const quantidadeDeNumeros = Number(prompt('Digite quantos números você deseja somar: '))
+
+        let somaTotal = 0;
+
+        for (let contador = 0; contador < quantidadeDeNumeros; contador++) {
+            const numeroSoma = Number(prompt(`Digite o ${contador + 1} número`))
+
+            somaTotal += numeroSoma // ✅ Fix 1: += ao invés de =
+        }
+
+        return somaTotal;
+    }
+
+    function subtrairDoisNumeros(numero1, numero2) {
+        return numero1 - numero2;
+    }
+
+    function somarPorcentagem(valor, porcentagem) {
+        return valor + (valor * (porcentagem / 100))
+    }
+
+    function multiplicarDoisNumeros(numero1, numero2) {
+        return numero1 * numero2;
+    }
+
+    function dividirDoisNumeros(numero1, numero2) {
+        return numero1 / numero2;
+    }
+
+    while (dentroDaCalculadora) {
+        const opcao = selecionarOpcao()
+
+        switch (opcao) {
+            case "1": {
+                const resultadoSoma = somarNumeros()
+                alert(`A soma de todos os números é: ${resultadoSoma}`)
+                break;
+            }
+            case "2": { // ✅ Fix 2: nomes corrigidos + escopo com chaves
+                const numero1 = Number(prompt('Digite o primeiro número: '));
+                const numero2 = Number(prompt('Digite o segundo número: '));
+                const subtracaoTotal = subtrairDoisNumeros(numero1, numero2)
+                alert(`O número ${numero1} menos o número ${numero2} é igual: ${subtracaoTotal}`)
+                break;
+            }
+            case "3": {
+                const numero = Number(prompt('Digite o número a ser atribuido: '))
+                const porcentagem = Number(prompt('Quantos porcento você deseja adicionado ao valor?'))
+                const somaTotal = somarPorcentagem(numero, porcentagem);
+                alert(`O número ${numero} acrescentando ${porcentagem}% é igual: ${somaTotal}`)
+                break;
+            }
+            case "4": {
+                const numero1 = Number(prompt('Digite o primeiro número: '));
+                const numero2 = Number(prompt('Digite o segundo número: '));
+                const multiplicacaoTotal = multiplicarDoisNumeros(numero1, numero2)
+                alert(`O número ${numero1} multiplicado pelo número ${numero2} é igual: ${multiplicacaoTotal}`)
+                break;
+            }
+            case "5": {
+                const number1 = Number(prompt('Digite o primeiro número: '));
+                const number2 = Number(prompt('Digite o segundo número: '));
+                const divisaoTotal = dividirDoisNumeros(number1, number2);
+                alert(`O número ${number1} dividido pelo número ${number2} é igual: ${divisaoTotal}`)
+                break;
+            }
+            case "6":
+                dentroDaCalculadora = false;
+                break;
+            default:
+                alert('Opção inválida! Selecione algum número do menu!')
+                break;
+        }
+    }
+}
+
+function exercicio42() {
+    let posicao = ["", "", "", "", "",]
+    for (let i = 0; i < posicao.length; i++) {
+        posicao[i] = prompt(`Digite o número da posição ${i + 1}: `) || `Número ${i + 1}`
+    }
+    alert(`Posição final:\n1º - ${posicao[0]}\n2º - ${posicao[1]}\n3º - ${posicao[2]}\n4º - ${posicao[3]}\n5º - ${posicao[4]}`)
+}
+
+function exercicio43() {
+    let numeros = [0, 0, 0, 0, 0, 0]
+    for (let i = 0; i < numeros.length; i++) {
+        numeros[i] = Number(prompt(`Digite um número ${i + 1}: `))
+    }
+    const soma = numeros.reduce((a, b) => a + b, 0)
+    alert(`A soma dos números é: ${soma}`)
+}
+
+function exercicio44() {
+    let numeros = [0, 0, 0, 0, 0, 0, 0, 0]
+    for (let i = 0; i < numeros.length; i++) {
+        numeros[i] = Number(prompt(`Digite um número ${i + 1}: `))
+    }
+    const pares = numeros.filter(n => n % 2 === 0)
+    alert(`Os números pares são: ${pares.join(", ")}`)
+}
+
+function exercicio45() {
+    let numeros = [0, 0, 0, 0, 0, 0, 0]
+    for (let i = 0; i < numeros.length; i++) {
+        numeros[i] = Number(prompt(`Digite um número ${i + 1}: `))
+    }
+    const maior = Math.max(...numeros)
+    alert(`O maior número é: ${maior}`)
+}
+
+function exercicio46() {
+    let numeros = [0, 0, 0, 0, 0]
+    for (let i = 0; i < numeros.length; i++) {
+        numeros[i] = Number(prompt(`Digite a média do aluno número ${i + 1}:`))
+    }
+    const media = numeros.reduce((a, b) => a + b, 0) / numeros.length
+    alert(`A média da turma é: ${media}`)
+}
+
+function exercicio47() {
+    let numeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    for (let i = 0; i < numeros.length; i++) {
+        numeros[i] = Number(prompt(`Digite o número ${i + 1}:`))
+    }
+
+    let contadorImpares = 0
+
+    for (let i = 0; i < numeros.length; i++) {
+        if (numeros[i] % 2 !== 0) {
+            contadorImpares++
+        }
+    }
+
+    alert(`Números digitados: ${numeros.join(", ")}`)
+    alert(`Quantidade de números ímpares: ${contadorImpares}`)
+}
+
+function exercicio48() {
+    let numeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    for (let i = 0; i < numeros.length; i++) {
+        numeros[i] = Number(prompt(`Digite o número ${i + 1}:`))
+    }
+
+    const busca = Number(prompt("Digite o número que deseja buscar:"))
+
+    let encontrado = false
+
+    for (let i = 0; i < numeros.length; i++) {
+        if (numeros[i] === busca) {
+            encontrado = true
+        }
+    }
+
+    if (encontrado) {
+        alert(`O número ${busca} foi encontrado no vetor!`)
+    } else {
+        alert(`O número ${busca} não está no vetor.`)
+    }
+}
+
+function exercicio49() {
+    let nomes = ["", "", "", "", ""]
+
+    for (let i = 0; i < nomes.length; i++) {
+        nomes[i] = prompt(`Digite o nome ${i + 1}:`)
+    }
+
+    let resultado = "Nomes que começam com 'A':\n"
+    let encontrou = false
+
+    for (let i = 0; i < nomes.length; i++) {
+        if (nomes[i][0].toUpperCase() === "A") {
+            resultado += `- ${nomes[i]}\n`
+            encontrou = true
+        }
+    }
+
+    if (encontrou) {
+        alert(resultado)
+    } else {
+        alert("Nenhum nome começa com a letra 'A'.")
+    }
+}
+
+function exercicio50() {
+    let numeros = [0, 0, 0, 0, 0, 0]
+
+    for (let i = 0; i < numeros.length; i++) {
+        numeros[i] = Number(prompt(`Digite o número ${i + 1}:`))
+    }
+
+    let resultado = "Números em ordem inversa:\n"
+
+    for (let i = numeros.length - 1; i >= 0; i--) {
+        resultado += `- ${numeros[i]}\n`
+    }
+
+    alert(resultado)
+}
+
+function exercicio51() {
+    let notas = [0, 0, 0, 0, 0, 0, 0, 0]
+
+    for (let i = 0; i < notas.length; i++) {
+        notas[i] = Number(prompt(`Digite a nota do aluno ${i + 1}:`))
+    }
+
+    let aprovados = 0
+
+    for (let i = 0; i < notas.length; i++) {
+        if (notas[i] >= 7.0) {
+            aprovados++
+        }
+    }
+
+    alert(`Total de alunos aprovados: ${aprovados} de ${notas.length}`)
+}
+
+function exercicio52() {
+    let resultado = "Contagem de 1 a 10:\n"
+    let i = 1
+    while (i <= 10) {
+        resultado += `${i}\n`
+        i++
+    }
+    alert(resultado)
+}
+
+function exercicio53() {
+    let numero = 0
+    while (numero <= 0) {
+        numero = Number(prompt("Digite um número maior que 0:"))
+    }
+    alert(`Número válido: ${numero}`)
+}
+
+function exercicio54() {
+    const secreto = 42
+    let chute = -1
+    while (chute !== secreto) {
+        chute = Number(prompt("Adivinhe o número secreto:"))
+        if (chute < secreto) alert("Muito baixo! Tente novamente.")
+        else if (chute > secreto) alert("Muito alto! Tente novamente.")
+    }
+    alert("Parabéns! Você acertou! O número era 42.")
+}
+
+function exercicio55() {
+    let soma = 0
+    let numero = 0
+    while (numero !== -1) {
+        numero = Number(prompt("Digite um número para somar (-1 para parar):"))
+        if (numero !== -1) soma += numero
+    }
+    alert(`Soma total: ${soma}`)
+}
+
+function exercicio56() {
+    let resposta = ""
+    while (resposta !== "s" && resposta !== "n") {
+        resposta = prompt("Você gosta de programação? (s/n)").toLowerCase()
+    }
+    if (resposta === "s") {
+        alert("Que ótimo! Programação é incrível!")
+    } else {
+        alert("Tudo bem, cada um tem seus gostos!")
+    }
+}
+
+function exercicio57() {
+    const base = Number(prompt("Digite a base:"))
+    const expoente = Number(prompt("Digite o expoente:"))
+    let resultado = 1
+    let i = 0
+    while (i < expoente) {
+        resultado *= base
+        i++
+    }
+    alert(`${base}^${expoente} = ${resultado}`)
+}
+
+function exercicio58() {
+    let resultado = "Números pares de 0 a 20:\n"
+    let i = 0
+    while (i <= 20) {
+        resultado += `${i}\n`
+        i += 2
+    }
+    alert(resultado)
+}
+
+function exercicio59() {
+    let soma = 0
+    let quantidade = 0
+    let nota = 0
+    while (nota >= 0) {
+        nota = Number(prompt("Digite a nota do aluno (-1 para parar):"))
+        if (nota >= 0) {
+            soma += nota
+            quantidade++
+        }
+    }
+    if (quantidade === 0) {
+        alert("Nenhuma nota digitada.")
+    } else {
+        alert(`Média da turma: ${(soma / quantidade).toFixed(2)}`)
+    }
+}
+
+function exercicio60() {
+    const numero = Number(prompt("Digite um número para calcular o fatorial:"))
+    let resultado = 1
+    let i = 2
+    while (i <= numero) {
+        resultado *= i
+        i++
+    }
+    alert(`${numero}! = ${resultado}`)
+}
+
+function exercicio61() {
+    const n = Number(prompt("Quantos termos de Fibonacci deseja ver?"))
+    let resultado = "Sequência de Fibonacci:\n"
+    let a = 0
+    let b = 1
+    let contador = 0
+    while (contador < n) {
+        resultado += `${a}\n`
+        const temp = a + b
+        a = b
+        b = temp
+        contador++
+    }
+    alert(resultado)
+}
+
+function exercicio62() {
+    const dividendo = Number(prompt("Digite o dividendo:"))
+    const divisor = Number(prompt("Digite o divisor:"))
+    let quociente = 0
+    let resto = dividendo
+    while (resto >= divisor) {
+        resto -= divisor
+        quociente++
+    }
+    alert(`${dividendo} ÷ ${divisor} = ${quociente} (resto: ${resto})`)
+}
+
+function exercicio63() {
+    let maior = null
+    let menor = null
+    let numero = -1
+    while (numero !== 0) {
+        numero = Number(prompt("Digite um número (0 para parar):"))
+        if (numero !== 0) {
+            if (maior === null || numero > maior) maior = numero
+            if (menor === null || numero < menor) menor = numero
+        }
+    }
+    if (maior === null) {
+        alert("Nenhum número digitado.")
+    } else {
+        alert(`Maior: ${maior}\nMenor: ${menor}`)
+    }
+}
+
+function exercicio64() {
+    let saldo = 500
+    let continuar = true
+    while (continuar) {
+        const saque = Number(prompt(`Saldo: R$${saldo}\nDigite o valor do saque:`))
+        if (saque <= saldo) {
+            saldo -= saque
+            alert(`Saque de R$${saque} realizado.\nSaldo restante: R$${saldo}`)
+            if (saldo === 0) {
+                alert("Saldo zerado. Encerrando.")
+                continuar = false
+            }
+        } else {
+            alert(`Saldo insuficiente! Seu saldo é R$${saldo}.`)
+            continuar = false
+        }
+    }
+}
+
+function exercicio65() {
+    let vetor = [0, 0, 0, 0, 0]
+    let i = 0
+    while (i < vetor.length) {
+        vetor[i] = Number(prompt(`Digite o número ${i + 1}:`))
+        i++
+    }
+    alert(`Vetor preenchido: [${vetor}]`)
+}
+
+function exercicio66() {
+    let nomes = []
+    let nome = ""
+    while (nome.toLowerCase() !== "fim") {
+        nome = prompt(`Digite um nome (ou "fim" para encerrar):`)
+        if (nome.toLowerCase() !== "fim") {
+            nomes.push(nome)
+        }
+    }
+    if (nomes.length === 0) {
+        alert("Nenhum nome cadastrado.")
+    } else {
+        alert(`Nomes cadastrados:\n${nomes.join("\n")}`)
+    }
+}
+
 const output = document.getElementById('output-area');
 const originalConsoleLog = console.log;
 const originalAlert = window.alert;
@@ -731,7 +1163,7 @@ function showResult() {
 
 const menu = document.getElementById('menu');
 
-for (let i = 1; i <= 40; i++) {
+for (let i = 1; i <= 66; i++) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
@@ -793,7 +1225,33 @@ function getDescricao(n) {
         38: "Contagem por Categoria",
         39: "Ranking de Pontuação",
         40: "Carrinho Simples",
-        41: "Calculadora com switch"
+        41: "Calculadora com switch",
+        42: "Preencher e Exibir",
+        43: "Soma dos Elementos",
+        44: "Apenas os Pares",
+        45: "Encontrando o Maior Valor",
+        46: "Média da Turma",
+        47: "Contando Ímpares",
+        48: "Procurando um Número",
+        49: "Nomes com a Letra 'A'",
+        50: "Vetor Invertido",
+        51: "Alunos Aprovados",
+        52: "Contagem Crescente",
+        53: "Peça um Número Positivo",
+        54: "Adivinhe o Número",
+        55: "Somador com Flag",
+        56: "Validação de Resposta",
+        57: "Potência sem Operador Direto",
+        58: "Contagem de Pares",
+        59: "Média da Turma com Flag",
+        60: "Fatorial",
+        61: "Fibonacci",
+        62: "Divisão por Subtrações Sucessivas",
+        63: "Maior e Menor com Flag",
+        64: "Simulando um Saque",
+        65: "Preenchendo Vetor com While",
+        66: "Cadastro na Lista"
+
     };
     return desc[n] || '';
 }
